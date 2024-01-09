@@ -4,6 +4,7 @@ use std::env;
 use std::time::Instant;
 use std::borrow::Cow;
 
+
 mod utils{pub mod network;}
 use utils::network::check_url_availability;
 
@@ -11,9 +12,10 @@ use utils::network::check_url_availability;
 async fn main() {
     let args: Vec<String> = env::args().collect();
 
-    if args.len() < 3 {
+    if args.len() < 2 {
         println!("Usage: cargo run -- --speed");
         println!("Usage: cargo run -- --check --url <URL>");
+        println!("Usage: cargo run -- --geolocation");
         return;
     }
 
@@ -27,7 +29,9 @@ async fn main() {
 
         let url = &args[3];
         check_url_availability(url).await;
-    } else {
+    }
+    
+    else {
         println!("Invalid command");
     }
 }
