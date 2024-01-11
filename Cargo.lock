@@ -688,7 +688,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust-network-ninjs"
+name = "rust-network-ninjas"
 version = "0.1.0"
 dependencies = [
  "indicatif",

@@ -5,8 +5,10 @@ use std::time::Instant;
 use std::borrow::Cow;
 
 
-mod utils{pub mod network;}
+
+mod utils{pub mod network; pub mod ping;}
 use utils::network::check_url_availability;
+use utils::ping::perform_ping;
 
 #[tokio::main]
 async fn main() {
@@ -29,6 +31,11 @@ async fn main() {
 
         let url = &args[3];
         check_url_availability(url).await;
+    }else if args[1] == "--ping"{
+        if args.len() < 4 || args[2] != "--ping" {
+            let target = &args[3];
+            perform_ping(target);
+        }
     }
     
     else {
