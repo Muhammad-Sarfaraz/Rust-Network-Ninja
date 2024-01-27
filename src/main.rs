@@ -4,20 +4,26 @@ use std::env;
 use std::time::Instant;
 use std::borrow::Cow;
 
-
-
 mod utils{pub mod network; pub mod ping;}
 use utils::network::check_url_availability;
 use utils::ping::perform_ping;
+mod extra {
+    pub mod help;
+}
+
+use extra::help::list_of_available_commands;
 
 #[tokio::main]
 async fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 2 {
-        println!("Usage: cargo run -- --speed");
-        println!("Usage: cargo run -- --check --url <URL>");
-        println!("Usage: cargo run -- --geolocation");
+        println!("Please type --help");
+        return;
+    }
+
+    if args.contains(&String::from("--help")) {
+        list_of_available_commands();
         return;
     }
 
