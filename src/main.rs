@@ -50,7 +50,7 @@ async fn main() {
 }
 
 async fn show_network_speed() {
-    let url = "https://example.com"; // Replace with a URL that you want to test download speed
+    let url = "https://fast.com"; // Replace with a URL that you want to test download speed
 
     let client = reqwest::Client::new();
     let start_time = Instant::now();
